@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TitleComponent } from './components/title/title.component';
-import { MenuButtonComponent } from "./components/menu-button/menu-button.component";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TitleComponent, ToolbarComponent],
+  imports: [TitleComponent,RouterOutlet,ToolbarComponent],
   template: `
-    <app-title title="Portfilio"/>
+  <div>
+    <div class="bg-gray-100  min-h-30vh shadow-md">
+      <app-title title="ARP Racing Photography"/>
+      <app-toolbar/>
+    </div>
     <router-outlet />
-    <app-toolbar/>
+  </div>
   `,
   styles: [],
 })

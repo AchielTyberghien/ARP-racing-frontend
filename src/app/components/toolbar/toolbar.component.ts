@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { MenuButtonComponent } from '../menu-button/menu-button.component';
 
 @Component({
   selector: 'app-toolbar',
-  imports: [MenuButtonComponent],
+  imports: [],
   template: `
-    <app-menu-button (btnClicked)="showButtonClicked()"/>
+    <div class="bg-gray-200 p-4 px-100 flex justify-between items-center">
+      <div class="text-lg font-semibold text-black font-helvetica">About</div>
+      <div class="text-lg font-semibold text-black font-helvetica">Portfolio</div>
+      <div class="text-lg font-semibold text-black font-helvetica">Library</div>
+      <div class="text-lg font-semibold text-black font-helvetica">Contact</div>
+    </div>
   `,
   styles: ``
 })
-export class ToolbarComponent {
-  showButtonClicked() {
-    console.log('Button clicked!');
-  }
-}
+export class ToolbarComponent {}
