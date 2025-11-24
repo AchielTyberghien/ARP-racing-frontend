@@ -4,7 +4,7 @@ import { Component, input } from '@angular/core';
   selector: 'app-title',
   imports: [],
   template: `
-      <div class="text-center text-3xl font-bold text-black font-helvetica "> {{title()}} </div>
+      <div class="text-center text-3xl font-bold text-white font-helvetica "> {{title()}} </div>
   `,
   styles: ``
 })
