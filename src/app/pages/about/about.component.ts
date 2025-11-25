@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { TitleComponent } from '../../components/title/title.component';
-import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-about',
-  imports: [TitleComponent, ToolbarComponent],
+  imports: [HeaderComponent],
   template: `
-    <div class="p-2 top-0 left-0 w-full bg-black" >
-      <app-title title="ARP Racing Photography"/>
-      <app-toolbar/>
-    </div>
+    <app-header></app-header>
     <div class="flex p-10">
       <div>
         <img src="img/about/portret.jpg" alt="portret" class="w-60 h-60 rounded-full mx-auto mt-4"/>

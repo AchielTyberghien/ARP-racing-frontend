@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
-import { TitleComponent } from '../../components/title/title.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-library',
-  imports: [TitleComponent, ToolbarComponent],
+  imports: [HeaderComponent],
   template: `
-    <div class="p-2 top-0 left-0 w-full bg-black" >
-      <app-title title="ARP Racing Photography"/>
-      <app-toolbar/>
-    </div>
+    <app-header></app-header>
     <div class="flex flex-wrap justify-center">
       <div class="relative m-10 w-90 h-60 overflow-hidden">
         <p class="absolute inset-0 mb-0 flex items-center justify-center text-white font-bold text-center bg-black bg-opacity-50">

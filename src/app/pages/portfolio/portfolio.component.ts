@@ -1,16 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
-import { TitleComponent } from '../../components/title/title.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
   selector: 'app-portfolio',
-  imports: [TitleComponent, ToolbarComponent],
+  imports: [HeaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <div class="p-2 top-0 left-0 w-full bg-black" >
-      <app-title title="ARP Racing Photography"/>
-      <app-toolbar/>
-    </div>
+    <app-header></app-header>
     <picflow-gallery 
       id="gal_LV7QSi90Qs9M1uzf"
       tenant="tnt_1IHEoA81RTBoPxjS"
