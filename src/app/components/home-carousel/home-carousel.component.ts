@@ -14,7 +14,7 @@ import { CarouselComponent, CarouselInnerComponent, CarouselItemComponent } from
             <img
               [src]="slide.src"
               alt="{{slide.title}}"
-              class="flex w-full h-screen object-cover"
+              class="flex w-full h-screen object-cover transition"
               loading="lazy"
             />
           </c-carousel-item>

@@ -7,7 +7,7 @@ import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
   selector: 'app-home',
   imports: [HomeCarouselComponent, TitleComponent, ToolbarComponent],
   template: `
-    <div class="p-2 absolute top-0 left-0 w-full bg-black bg-opacity-50 z-10 " >
+    <div class="p-3 absolute top-0 left-0 w-full bg-black bg-opacity-50 z-10 " >
       <app-title title="ARP Racing Photography"/>
       <app-toolbar/>
     </div>

@@ -6,10 +6,10 @@ import { RouterLink } from "@angular/router";
   imports: [RouterLink],
   template: `
     <div class="px-[15%] py-4 flex justify-between items-center" >
-      <div class="text-lg font-semibold text-white font-helvetica" routerLink="/about">About</div>
-      <div class="text-lg font-semibold text-white font-helvetica" routerLink="/portfolio">Portfolio</div>
-      <div class="text-lg font-semibold text-white font-helvetica" routerLink="/library">Library</div>
-      <div class="text-lg font-semibold text-white font-helvetica" routerLink="/contact">Contact</div>
+      <div class="text-2xl font-semibold text-white font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/about">About</div>
+      <div class="text-2xl font-semibold text-white font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/portfolio">Portfolio</div>
+      <div class="text-2xl font-semibold text-white font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/library">Library</div>
+      <div class="text-2xl font-semibold text-white font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/contact">Contact</div>
     </div>
   `,
   styles: ``

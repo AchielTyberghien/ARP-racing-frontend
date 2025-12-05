@@ -12,9 +12,10 @@ import { FormControlDirective, FormDirective, FormLabelDirective } from '@coreui
     FormControlDirective],
   template: `
     <app-header></app-header>
-    
-    <div class="m-10 flex justify-center flex-wrap">
-      <h2 class="w-150">Contact</h2>
+    <div class="flex justify-center">
+      <h2 class="w-150 py-4">Contact</h2>
+    </div>
+    <div class="flex justify-center flex-wrap">
       <form cForm class="w-150">
         <div class="mb-3">
           <label cLabel for="exampleFormControlInput1">Email address</label>
@@ -38,7 +39,9 @@ import { FormControlDirective, FormDirective, FormLabelDirective } from '@coreui
         </div>
       </form>
     </div>
-    
+    <div class="flex justify-center ">
+      <button class=" bg-blue-500 text-white px-4 py-2 rounded" type="submit">Send</button>
+    </div>
   `,
   styles: ``,
 })
