@@ -5,17 +5,19 @@ import { HeaderComponent } from '../../components/header/header.component';
   selector: 'app-about',
   imports: [HeaderComponent],
   template: `
+  <div class="max-h-screen">
     <app-header></app-header>
-    <div class="h-screen flex p-10">
-      <div class="w-75">
-        <img src="img/about/portret.jpg" alt="portret" class=" p-5 mx-auto mt-4 h-screen rounded-full"/>
+    <div class="flex p-5">
+      <div class="h-75">
+        <img src="img/about/portret.jpg" alt="portret" class="p-5 mt-4 rounded-full"/>
       </div>
-      <div class="bg-gray-500 rounded-lg">
-
+      <div class=" p-5 bg-gray-500 rounded-lg">
         <p class="text-center text-lg mt-4 mx-4">
           Welcome to ARP Racing Photography! I'm Achiel, a passionate motorsport photographer dedicated to capturing the thrill and excitement of racing events.
       </div>
     </div>
+  </div>
+    
   `,
   styles: ``,
 })
