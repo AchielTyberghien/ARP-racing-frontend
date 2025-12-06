@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-library',
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, NgOptimizedImage],
   template: `
     <app-header></app-header>
     <div class="flex flex-wrap justify-center">
@@ -32,6 +33,7 @@ import { HeaderComponent } from '../../components/header/header.component';
         <img src="img/portfolio/IMG_8223.jpg" alt="" class="w-full h-full object-cover object-center">
       </div>
     </div>
+    <img ngSrc="Arp%20Racing/Carousel/IMG_8782i.jpg" alt="test rally spa" width="500" height="300" priority="true">
   `,
   styles: ``,
 })
