@@ -23,6 +23,7 @@ import { FormControlDirective, FormDirective, FormLabelDirective } from '@coreui
                 id="exampleFormControlInput1"
                 placeholder="name@example.com"
                 type="email"
+                required
           />
         </div>
         <div class="mb-3">
@@ -31,17 +32,19 @@ import { FormControlDirective, FormDirective, FormLabelDirective } from '@coreui
                 id="exampleFormControlInput2"
                 placeholder="Subject"
                 type="text"
+                required
           />
         </div>
         <div class="mb-3">
           <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
-          <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea cFormControl id="exampleFormControlTextarea1" rows="3" required></textarea>
+        </div>
+        <div class="flex justify-center ">
+          <button class=" bg-blue-500 text-white px-4 py-2 rounded" type="submit">Send</button>
         </div>
       </form>
     </div>
-    <div class="flex justify-center ">
-      <button class=" bg-blue-500 text-white px-4 py-2 rounded" type="submit">Send</button>
-    </div>
+    
   `,
   styles: ``,
 })
