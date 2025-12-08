@@ -7,15 +7,18 @@ import { HeaderComponent } from '../../components/header/header.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <app-header></app-header>
-    <picflow-gallery 
-      id="gal_LV7QSi90Qs9M1uzf"
-      tenant="tnt_1IHEoA81RTBoPxjS"
-      lightbox="#000000E6"
-      no-padding="true"
-      no-background="true"
-      show-cover="true"
-      class="p-3">
-    </picflow-gallery>
+    <div class="p-3 h-screen w-full">
+      <picflow-gallery 
+        id="gal_LV7QSi90Qs9M1uzf"
+        tenant="tnt_1IHEoA81RTBoPxjS"
+        lightbox="#000000E6"
+        no-padding="true"
+        no-background="true"
+        show-cover="true"
+        class="">
+      </picflow-gallery>
+    </div>
+    
 
   `,
   styles: ``,

@@ -4,6 +4,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { LibraryComponent } from './pages/library/library.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ArchiveComponent } from './pages/archive/archive.component';
 
 export const routes: Routes = [{
     path: '',
@@ -25,5 +26,9 @@ export const routes: Routes = [{
 {
     path: 'contact',
     component: ContactComponent
+},
+{
+    path: 'archive/:id',
+    component: ArchiveComponent
 }
 ];
