@@ -31,4 +31,14 @@ export class ApiService {
       })
     );
   }
+
+  getEventPictures(id : String): Observable<{ success: boolean; data: string[] }> {
+    return this.http.get<{ success: boolean; data: string[] }>(`${this.apiUrl}/library/${id}`).pipe(
+      shareReplay(1),
+      catchError(error => {
+        console.error('API Error:', error);
+        return throwError(() => new Error('Something went wrong'));
+      })
+    );
+  }
 }
