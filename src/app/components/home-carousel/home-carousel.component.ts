@@ -10,14 +10,14 @@ import { ApiService } from '../../services/api.service';
   template: `
   @if (loading) {
     <div class="relative h-screen w-screen bg-black">
-      <img
+      <!-- <img
         src="img/carousel/s1.jpg"
         alt="placeholder image"
         fill
         class="h-screen w-full object-cover transition"
         priority="true"
         placeholder
-      />    
+      />     -->
     </div>
          
   }
@@ -32,7 +32,7 @@ import { ApiService } from '../../services/api.service';
             <c-carousel-item class="relative h-full">
               <img
                 ngSrc="Arp%20Racing/Carousel/{{slide.src}}"
-                alt="{{slide.title}}"
+                alt="{{slide.description}}"
                 fill
                 class="h-screen w-full object-cover transition"
                 priority="true"
@@ -58,7 +58,7 @@ export class HomeCarouselComponent implements OnInit {
     this.loading = true;
     this.apiService.getCarouselImages().subscribe({
       next: (data) => {
-        this.slides = data.files.map((file: string) => ({ src: file }));
+        this.slides = data.pictures.map((picture: {name: string, description: string}) => ({ src: picture.name, description: picture.description }));
         this.loading = false;
       },
       error: (err) => {
