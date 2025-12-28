@@ -5,7 +5,7 @@ import { RouterLink } from "@angular/router";
   selector: 'app-title',
   imports: [RouterLink],
   template: `
-      <div class="text-center text-4xl font-bold text-white font-helvetica " routerLink=""> {{title()}} </div>
+      <div class="text-center text-5xl font-bold font-helvetica" routerLink=""> {{title()}} </div>
   `,
   styles: ``
 })

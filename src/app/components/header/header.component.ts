@@ -6,10 +6,11 @@ import { TitleComponent } from '../title/title.component';
   selector: 'app-header',
   imports: [TitleComponent, ToolbarComponent],
   template: `
-    <div class="p-3 top-0 left-0 w-full bg-black" >
-      <app-title title="ARP Racing Photography"/>
-      <app-toolbar/>
+    <div class="p-3 top-0 w-full bg-neutral-300" >
+      <app-title title="ARP Racing Photography" class="text-neutral-800"/>
+      <app-toolbar class="text-neutral-800"/>
     </div>
+    
   `,
   styles: ``,
 })
