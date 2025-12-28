@@ -11,8 +11,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getCarouselImages(): Observable<{ success: boolean; files: string[] }> {
-    return this.http.get<{ success: boolean; files: string[] }>(`${this.apiUrl}/carousel`).pipe(
+  getCarouselImages(): Observable<{ success: boolean; pictures: {name: string, description: string}[] }> {
+    return this.http.get<{ success: boolean; pictures: {name: string, description: string}[] }>(`${this.apiUrl}/carousel`).pipe(
       shareReplay(1),
       catchError(error => {
         console.error('API Error:', error);
@@ -32,9 +32,19 @@ export class ApiService {
     );
   }
 
-  getEventPictures(id : String): Observable<{ success: boolean; data: string[] }> {
-    return this.http.get<{ success: boolean; data: string[] }>(`${this.apiUrl}/library/${id}`).pipe(
+  getEventPictures(id : string): Observable<{ success: boolean; pictures: {name: string, description: string}[] }> {
+    console.log('Fetching event pictures for ID:', encodeURIComponent(id));
+    return this.http.get<{ success: boolean; pictures: {name: string, description: string}[] }>(`${this.apiUrl}/library/${encodeURIComponent(id)}`).pipe(
       shareReplay(1),
+      catchError(error => {
+        console.error('API Error:', error);
+        return throwError(() => new Error('Something went wrong'));
+      })
+    );
+  }
+
+  sendContactForm(formData: any): Observable<any> {
+    return this.http.post('http://localhost:5678/webhook/8eec005a-d7e9-4f46-a3db-6f49761ddcf5', formData).pipe(
       catchError(error => {
         console.error('API Error:', error);
         return throwError(() => new Error('Something went wrong'));
