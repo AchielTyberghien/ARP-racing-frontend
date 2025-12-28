@@ -7,7 +7,7 @@ import { HeaderComponent } from '../../components/header/header.component';
   template: `
   <div class="max-h-screen">
     <app-header></app-header>
-    <div class="flex p-5">
+    <div class="bg-neutral-200 flex p-5">
       <div class="h-75">
         <img src="img/about/portret.jpg" alt="portret" class="p-5 mt-4 rounded-full"/>
       </div>

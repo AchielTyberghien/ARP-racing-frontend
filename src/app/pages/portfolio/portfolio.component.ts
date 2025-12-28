@@ -7,7 +7,7 @@ import { HeaderComponent } from '../../components/header/header.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <app-header></app-header>
-    <div class="p-3 h-screen w-full">
+    <div class="p-3 h-screen w-full bg-neutral-200">
       <picflow-gallery 
         id="gal_LV7QSi90Qs9M1uzf"
         tenant="tnt_1IHEoA81RTBoPxjS"
