@@ -8,26 +8,37 @@ import { Router } from '@angular/router';
   selector: 'app-library',
   imports: [HeaderComponent, NgOptimizedImage],
   template: `
-    <app-header></app-header>
-
-    @if (loading) {
-      <!-- <div>Loading library...</div> -->
-    }
-    @else if (error) {
-      <div class="text-red-500">{{error}}</div>
-    }
-    @else {
-      <div class="flex flex-wrap justify-center">
-        @for (item of folderKeys; track $index) {
-          <div class="relative m-10 w-90 h-60 overflow-hidden" (click)="onFolderClick(item)">
-            <p class="absolute inset-0 mb-0 flex items-center justify-center text-white font-bold text-center bg-black bg-opacity-50 z-10 hover:scale-130 transition">
-              {{item}}
-            </p>
-            <img ngSrc="Arp%20Racing/library/{{item}}/{{folders.get(item)}}" alt="{{item}} picture" loading="lazy" width="360" height="240" class="object-cover object-center">
-          </div>
-        }
-      </div>
-    }
+    <div class="h-screen bg-neutral-200">
+      <app-header></app-header>
+      @if (loading) {
+        <!-- <div>Loading library...</div> -->
+      }
+      @else if (error) {
+        <div class="text-red-500">{{error}}</div>
+      }
+      @else {
+        <div class="flex flex-wrap justify-center bg-neutral-200">
+          @for (item of folderKeys; track $index) {
+            <div class="relative m-10 w-70 h-95 overflow-hidden bg-neutral-300" (click)="onFolderClick(item)">
+              <div class="absolute inset-0  z-10 flex items-center">
+                <p class="transform -rotate-90 text-xl text-neutral-800 font-bold whitespace-nowrap absolute left-3 top-91 origin-left">
+                  {{ item }}
+                </p>
+              </div>
+              <div class="relative mx-4 my-2 w-65 h-95 overflow-hidden">
+                <img
+                  ngSrc="Arp%20Racing/library/{{item}}/{{folders.get(item)}}"
+                  alt="{{item}} picture"
+                  loading="lazy"
+                  fill
+                  class="object-cover object-center"
+                >
+              </div>
+            </div> 
+          }
+        </div>
+      }
+    </div>
   `,
   styles: ``,
 })
