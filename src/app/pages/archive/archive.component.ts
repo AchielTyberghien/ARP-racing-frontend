@@ -8,6 +8,7 @@ import { NgOptimizedImage } from '@angular/common'
   selector: 'app-archive',
   imports: [HeaderComponent, NgOptimizedImage],
   template: `
+  <div class="h-screen bg-neutral-200">
     <app-header></app-header>
     @if (loading) {
       <!-- <div>Loading library...</div> -->
@@ -18,12 +19,37 @@ import { NgOptimizedImage } from '@angular/common'
     @else {
       <div class="flex flex-wrap justify-center">
         @for (item of slides; track $index) {
-          <div class="relative m-7 w-120 h-80 overflow-hidden">
-            <img ngSrc="Arp%20Racing/library/{{userId}}/{{item.src}}" alt="{{userId}} picture" loading="lazy" width="480" height="320" class="object-cover object-center">
+          <div class="relative m-7 w-120 h-80 overflow-hidden flex items-center justify-center" (click)="openImage(item)">
+            <img ngSrc="Arp%20Racing/library/{{userId}}/{{item.src}}" alt="{{item.description}}" loading="lazy" width="480" height="320" class="object-contain object-center w-full h-full">
           </div>
         }
       </div>
+
+      @if (selectedImage) {
+        <div class="fixed inset-0 bg-black/80 flex items-center justify-center z-10">
+          
+          <button
+            class="absolute top-4 right-4"
+            (click)="closeImage()"
+          >
+          <p class="text-white text-6xl font-light leading-none">×</p>
+            
+          </button>
+
+          <div class="relative w-[90vw] h-[90vh] flex items-center justify-center">
+            <img
+              [ngSrc]="'Arp%20Racing/library/' + userId + '/' + selectedImage.src"
+              fill
+              class="object-contain"
+              alt="{{selectedImage.description}}"
+            />
+          </div>
+
+        </div>
+      }
     }
+    
+  </div>
   `,
   styles: ``,
 })
@@ -32,6 +58,7 @@ export class ArchiveComponent implements OnInit {
   slides: any[] = new Array().fill({src: ''});
   loading = false;
   error: string | null = null;
+  selectedImage: {src: string, description: string} | null = null;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
   
@@ -39,12 +66,10 @@ export class ArchiveComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.userId = params.get('id');
     });
-    console.log('Archive for user:', this.userId);
     this.loading = true;
     this.apiService.getEventPictures(this.userId || '').subscribe({
       next: (data) => {
-        console.log('Received data:', data);
-        this.slides = data.data.map((file: string) => ({ src: file }));
+        this.slides = data.pictures.map((file: {name: string, description: string}) => ({ src: file.name, description: file.description }));
         this.loading = false;
       },
       error: (err) => {
@@ -52,5 +77,13 @@ export class ArchiveComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  openImage(img: {src: string, description: string}) {
+  this.selectedImage = img;
+}
+
+  closeImage() {
+    this.selectedImage = null;
   }
 }
