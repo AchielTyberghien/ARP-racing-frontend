@@ -7,7 +7,7 @@ import { catchError, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://arp.localhost/api';
 
   constructor(private http: HttpClient) {}
 
@@ -44,7 +44,7 @@ export class ApiService {
   }
 
   sendContactForm(formData: any): Observable<any> {
-    return this.http.post('http://localhost:5678/webhook/8eec005a-d7e9-4f46-a3db-6f49761ddcf5', formData).pipe(
+    return this.http.post('http://localhost:5678/webhook/6dedddcd-4a9a-4a62-86cb-3bc690921390', formData).pipe(
       catchError(error => {
         console.error('API Error:', error);
         return throwError(() => new Error('Something went wrong'));
