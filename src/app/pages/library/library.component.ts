@@ -3,41 +3,46 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { NgOptimizedImage } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
+import { LoadingComponent } from "../../components/loading/loading.component";
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
   selector: 'app-library',
-  imports: [HeaderComponent, NgOptimizedImage],
+  imports: [HeaderComponent, NgOptimizedImage, LoadingComponent, FooterComponent],
   template: `
-    <div class="h-screen bg-neutral-200">
+    <div class="min-h-screen flex flex-col bg-neutral-200">
       <app-header></app-header>
-      @if (loading) {
-        <!-- <div>Loading library...</div> -->
-      }
-      @else if (error) {
-        <div class="text-red-500">{{error}}</div>
-      }
-      @else {
-        <div class="flex flex-wrap justify-center bg-neutral-200">
-          @for (item of folderKeys; track $index) {
-            <div class="relative m-10 w-70 h-95 overflow-hidden bg-neutral-300" (click)="onFolderClick(item)">
-              <div class="absolute inset-0  z-10 flex items-center">
-                <p class="transform -rotate-90 text-xl text-neutral-800 font-bold whitespace-nowrap absolute left-3 top-91 origin-left">
-                  {{ item }}
-                </p>
-              </div>
-              <div class="relative mx-4 my-2 w-65 h-95 overflow-hidden">
-                <img
-                  ngSrc="Arp%20Racing/library/{{item}}/{{folders.get(item)}}"
-                  alt="{{item}} picture"
-                  loading="lazy"
-                  fill
-                  class="object-cover object-center"
-                >
-              </div>
-            </div> 
-          }
-        </div>
-      }
+      <main class="flex-1 p-3">
+        @if (loading) {
+          <app-loading message=""></app-loading>
+        }
+        @else if (error) {
+          <div class="text-red-500">{{error}}</div>
+        }
+        @else {
+          <div class="flex flex-wrap justify-center bg-neutral-200">
+            @for (item of folderKeys; track $index) {
+              <div class="relative m-10 w-70 h-95 overflow-hidden bg-neutral-300" (click)="onFolderClick(item)">
+                <div class="absolute inset-0  z-10 flex items-center">
+                  <p class="transform -rotate-90 text-xl text-neutral-800 font-bold whitespace-nowrap absolute left-3 top-91 origin-left">
+                    {{ item }}
+                  </p>
+                </div>
+                <div class="relative mx-4 my-2 w-65 h-95 overflow-hidden">
+                  <img
+                    ngSrc="Arp%20Racing/library/{{item}}/{{folders.get(item)}}"
+                    alt="{{item}} picture"
+                    loading="lazy"
+                    fill
+                    class="object-cover object-center"
+                  >
+                </div>
+              </div> 
+            }
+          </div>
+        }
+      </main>
+      <app-footer></app-footer>
     </div>
   `,
   styles: ``,
