@@ -28,7 +28,7 @@ export const routes: Routes = [{
     component: ContactComponent
 },
 {
-    path: 'archive/:id',
+    path: 'archive/:eventName',
     component: ArchiveComponent
 }
 ];

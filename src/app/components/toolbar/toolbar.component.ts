@@ -5,12 +5,36 @@ import { RouterLink } from "@angular/router";
   selector: 'app-toolbar',
   imports: [RouterLink],
   template: `
-    <div class="px-[25%] py-4 flex justify-between items-center" >
-      <!-- <div class="text-2xl font-semibold text-white font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/about">About</div> -->
-      <div class="text-3xl font-semibold font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/portfolio">Portfolio</div>
-      <div class="text-3xl font-semibold font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/library">Library</div>
-      <div class="text-3xl font-semibold font-helvetica hover:scale-130 transition hover:underline hover:decoration-red-500 hover:underline-offset-10 hover:decoration-3" routerLink="/contact">Contact</div>
+    <div class="w-full flex flex-col md:flex-row justify-center items-center
+            space-y-4 md:space-y-0 md:space-x-12
+            py-4 bg-transparent">
+
+      <div routerLink="/portfolio"
+          class="text-lg md:text-xl font-semibold font-helvetica
+                  transition-transform duration-300
+                  hover:scale-110 hover:underline hover:decoration-red-500 hover:underline-offset-4
+                  cursor-pointer">
+        Portfolio
+      </div>
+
+      <div routerLink="/library"
+          class="text-lg md:text-xl font-semibold font-helvetica
+                  transition-transform duration-300
+                  hover:scale-110 hover:underline hover:decoration-red-500 hover:underline-offset-4
+                  cursor-pointer">
+        Library
+      </div>
+
+      <div routerLink="/contact"
+          class="text-lg md:text-xl font-semibold font-helvetica
+                  transition-transform duration-300
+                  hover:scale-110 hover:underline hover:decoration-red-500 hover:underline-offset-4
+                  cursor-pointer">
+        Contact
+      </div>
+
     </div>
+
   `,
   styles: ``
 })

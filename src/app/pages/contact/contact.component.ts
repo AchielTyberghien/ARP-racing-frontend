@@ -9,6 +9,7 @@ import {
 import { ApiService } from '../../services/api.service';
 import { LoadingComponent } from "../../components/loading/loading.component";
 import { FooterComponent } from "../../components/footer/footer.component";
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -23,124 +24,143 @@ import { FooterComponent } from "../../components/footer/footer.component";
     FooterComponent
 ],
   template: `
-    <div class="bg-neutral-200 min-h-screen flex flex-col">
+    <div class="min-h-screen flex flex-col bg-neutral-100">
+
       <app-header></app-header>
-      <main class="flex-1 p-3">
-        <div class="flex justify-center flex-wrap p-15">
+
+      <main class="flex-1 px-4 sm:px-6 lg:px-10 py-10">
+        <div class="flex justify-center">
+
           @if (loading) {
-            <app-loading message="Sending message..."></app-loading>
+            <div class="flex items-center justify-center min-h-[400px]">
+              <app-loading message="Sending message..." />
+            </div>
           }
+
           @else if (send) {
-            <div class="flex flex-col items-center justify-center gap-4">
-                
-                <div class="flex h-20 w-20 items-center justify-center rounded-full bg-green-600">
-                  <svg
-                    class="h-12 w-12 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="4"
-                    viewBox="0 0 24 24">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
+            <div class="flex flex-col items-center justify-center gap-6 min-h-[400px]">
 
-                
-                <p class="text-lg font-medium text-green-600 text-center">
-                  Your message has been sent successfully
-                </p>
+              <div class="flex h-20 w-20 items-center justify-center rounded-full bg-green-600">
+                <svg
+                  class="h-12 w-12 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7" />
+                </svg>
               </div>
+
+              <p class="text-lg font-semibold text-green-600 text-center">
+                Your message has been sent successfully
+              </p>
+
+              <p class="text-sm text-neutral-500 text-center max-w-md">
+                Thank you for reaching out. I’ll get back to you as soon as possible.
+              </p>
+
+            </div>
           }
+
           @else {
-          <form
-            cForm
-            class="w-150"
-            [formGroup]="contactForm"
-            (ngSubmit)="submit()"
-          >
-            <!-- Name  -->
-            <div class="mb-3">
-              <label cLabel>Name</label>
-              <input
-                cFormControl
-                type="text"
-                formControlName="name"
-                placeholder="Your name"
-              />
-              @if (isInvalid('name')) {
-                <p class="text-red-600 text-sm">
-                  Please enter a valid name
-                </p>
-              }
-              
-            </div>
+            <form
+              cForm
+              class="w-full max-w-xl bg-neutral-100 rounded-xl shadow-lg p-8"
+              [formGroup]="contactForm"
+              (ngSubmit)="submit()"
+            >
 
-            <!-- Email  -->
-            <div class="mb-3">
-              <label cLabel>Email address</label>
-              <input
-                cFormControl
-                type="email"
-                formControlName="email"
-                placeholder="name@example.com"
-              />
-              @if (isInvalid('email')) {
-                <p class="text-red-600 text-sm">
-                  Please enter a valid email address
-                </p>
-              }
-              
-            </div>
+              <!-- Name -->
+              <div class="mb-5">
+                <label cLabel class="mb-1 block font-medium">Name</label>
+                <input
+                  cFormControl
+                  type="text"
+                  formControlName="name"
+                  placeholder="Your name"
+                />
+                @if (isInvalid('name')) {
+                  <p class="text-red-600 text-sm mt-1">
+                    Please enter a valid name
+                  </p>
+                }
+              </div>
 
-            <!-- Subject -->
-            <div class="mb-3">
-              <label cLabel>Subject</label>
-              <input
-                cFormControl
-                type="text"
-                formControlName="subject"
-                placeholder="Subject"
-              />
-              @if (isInvalid('subject')) {
-                <p class="text-red-600 text-sm">
-                  Subject is required
-                </p>
-              }
-            </div>
+              <!-- Email -->
+              <div class="mb-5">
+                <label cLabel class="mb-1 block font-medium">Email address</label>
+                <input
+                  cFormControl
+                  type="email"
+                  formControlName="email"
+                  placeholder="name@example.com"
+                />
+                @if (isInvalid('email')) {
+                  <p class="text-red-600 text-sm mt-1">
+                    Please enter a valid email address
+                  </p>
+                }
+              </div>
 
-            <!-- Message  -->
-            <div class="mb-3">
-              <label cLabel>Message</label>
-              <textarea
-                cFormControl
-                rows="4"
-                formControlName="message"
-              ></textarea>
-              @if (isInvalid('message')) {
-                <p class="text-red-600 text-sm">
-                  Message is required
-                </p>
-              }
-            </div>
+              <!-- Subject -->
+              <div class="mb-5">
+                <label cLabel class="mb-1 block font-medium">Subject</label>
+                <input
+                  cFormControl
+                  type="text"
+                  formControlName="subject"
+                  placeholder="Subject"
+                />
+                @if (isInvalid('subject')) {
+                  <p class="text-red-600 text-sm mt-1">
+                    Subject is required
+                  </p>
+                }
+              </div>
 
-            <div class="flex justify-center">
-              <button
-                class="bg-blue-500 text-white px-4 py-2 rounded"
-                type="submit"
-                [disabled]="contactForm.invalid || loading"
-              >
-                {{ loading ? 'Sending...' : 'Send' }}
-              </button>
-            </div>
+              <!-- Message -->
+              <div class="mb-6">
+                <label cLabel class="mb-1 block font-medium">Message</label>
+                <textarea
+                  cFormControl
+                  rows="4"
+                  formControlName="message"
+                  placeholder="Your message..."
+                ></textarea>
+                @if (isInvalid('message')) {
+                  <p class="text-red-600 text-sm mt-1">
+                    Message is required
+                  </p>
+                }
+              </div>
 
-          </form>
+              <!-- Submit -->
+              <div class="flex justify-center ">
+                <div class=" bg-blue-500 rounded-3xl hover:bg-blue-600 transition-colors duration-300">
+                  <button
+                    class="px-6 py-2  text-white font-medium "
+                    type="submit"
+                    [disabled]="contactForm.invalid || loading"
+                  >
+                    {{ loading ? 'Sending...' : 'Send message' }}
+                  </button>
+                </div>
+                
+              </div>
+
+            </form>
           }
+
         </div>
       </main>
+
       <app-footer></app-footer>
+
     </div>
+
   `
 })
 export class ContactComponent implements OnInit {
@@ -151,8 +171,16 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService
-  ) {}
+    private apiService: ApiService,
+    private titleService: Title,
+    private metaService: Meta
+  ) {
+    this.titleService.setTitle('Contact - ARP Racing Photography');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Get in touch with ARP Racing Photography for inquiries, bookings, or collaborations. Use our contact form to reach out and capture the thrill of motorsport events together.'
+    });
+  }
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({

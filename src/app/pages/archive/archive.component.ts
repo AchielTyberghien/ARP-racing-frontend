@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from "../../components/header/header.component";
 import { ApiService } from '../../services/api.service';
 import { NgOptimizedImage } from '@angular/common'
 import { LoadingComponent } from "../../components/loading/loading.component";
 import { FooterComponent } from "../../components/footer/footer.component";
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-archive',
@@ -24,13 +25,13 @@ import { FooterComponent } from "../../components/footer/footer.component";
         <div class="flex flex-wrap justify-center">
           @for (item of slides; track $index) {
             <div class="relative m-7 w-120 h-80 overflow-hidden flex items-center justify-center" (click)="openImage(item)">
-              <img ngSrc="Arp%20Racing/library/{{userId}}/{{item.src}}" alt="{{item.description}}" loading="lazy" width="480" height="320" class="object-contain object-center w-full h-full">
+              <img ngSrc="Arp%20Racing/library/{{eventName()}}/{{item.src}}" alt="{{item.description}}" priority width="480" height="320" class="object-contain object-center w-full h-full">
             </div>
           }
         </div>
 
         @if (selectedImage) {
-          <div class="fixed inset-0 bg-black/80 flex items-center justify-center z-10">
+          <div class="fixed inset-0 bg-black/80 flex items-center justify-center z-40">
             
             <button
               class="absolute top-4 right-4"
@@ -42,7 +43,7 @@ import { FooterComponent } from "../../components/footer/footer.component";
 
             <div class="relative w-[90vw] h-[90vh] flex items-center justify-center">
               <img
-                [ngSrc]="'Arp%20Racing/library/' + userId + '/' + selectedImage.src"
+                [ngSrc]="'Arp%20Racing/library/' + eventName() + '/' + selectedImage.src"
                 fill
                 class="object-contain"
                 alt="{{selectedImage.description}}"
@@ -59,20 +60,22 @@ import { FooterComponent } from "../../components/footer/footer.component";
   styles: ``,
 })
 export class ArchiveComponent implements OnInit {
-  userId: string | null = '';
+  eventName =  input<string>('');
   slides: any[] = new Array().fill({src: ''});
   loading = false;
   error: string | null = null;
   selectedImage: {src: string, description: string} | null = null;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private titleService: Title, private metaService: Meta) {}
   
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.userId = params.get('id');
+    this.titleService.setTitle(`Archive ${this.eventName()} - ARP Racing Photography`);
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Browse the archive of ARP Racing Photography, featuring a comprehensive collection of high-speed motorsport images capturing the thrill and excitement of racing events.'
     });
     this.loading = true;
-    this.apiService.getEventPictures(this.userId || '').subscribe({
+    this.apiService.getEventPictures(this.eventName() || '').subscribe({
       next: (data) => {
         this.slides = data.pictures.map((file: {name: string, description: string}) => ({ src: file.name, description: file.description }));
         this.loading = false;

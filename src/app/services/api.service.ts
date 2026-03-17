@@ -7,7 +7,7 @@ import { catchError, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://arp.localhost/api';
+  private apiUrl = 'https://nodejs-backend-bb71.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
@@ -33,7 +33,6 @@ export class ApiService {
   }
 
   getEventPictures(id : string): Observable<{ success: boolean; pictures: {name: string, description: string}[] }> {
-    console.log('Fetching event pictures for ID:', encodeURIComponent(id));
     return this.http.get<{ success: boolean; pictures: {name: string, description: string}[] }>(`${this.apiUrl}/library/${encodeURIComponent(id)}`).pipe(
       shareReplay(1),
       catchError(error => {
