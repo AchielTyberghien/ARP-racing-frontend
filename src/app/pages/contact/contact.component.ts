@@ -207,7 +207,7 @@ export class ContactComponent implements OnInit {
       },
       error: () => {
         this.loading = false;
-        alert('Failed to send message');
+        alert('Something went wrong while sending your message. Please try again later or contact me directly at info.arpracing@gmail.com');
       }
     });
   }
