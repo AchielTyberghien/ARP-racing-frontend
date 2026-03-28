@@ -7,7 +7,7 @@ import { RouterLink } from "@angular/router";
   template: `
     <div class="w-full flex flex-col md:flex-row justify-center items-center
             space-y-4 md:space-y-0 md:space-x-12
-            py-4 bg-transparent">
+            py-4 bg-transparent md:px-15">
 
       <div routerLink="/portfolio"
           class="nav-link text-lg md:text-xl font-semibold font-helvetica
