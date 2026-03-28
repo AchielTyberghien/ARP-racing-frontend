@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-footer',
   imports: [],
   template: `
-  <div class=" h-15 bg-neutral-800">
+  <div class=" h-15 bg-[#0f0f14]/75 backdrop-blur-md border-t border-white/6">
     <div class="flex justify-center items-center h-full p-4">
       <p class="text-white text-sm">
-        &copy; 2026 ARP Racing. All rights reserved.
+        &copy; 2026 ARP Racing Photography. All rights reserved.
       </p>
     </div>
   </div>

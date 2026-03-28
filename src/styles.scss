@@ -1,1 +1,30 @@
 @use "@coreui/coreui/scss/coreui";
+
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 0;
+    border-radius: 9999px;
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.8), 0 0 16px rgba(239, 68, 68, 0.4);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover {
+    color: white;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}

@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
 import { catchError, throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'https://nodejs-backend-bb71.onrender.com/api';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -43,11 +44,11 @@ export class ApiService {
   }
 
   sendContactForm(formData: any): Observable<any> {
-    return this.http.post('http://localhost:5678/webhook/6dedddcd-4a9a-4a62-86cb-3bc690921390', formData).pipe(
-      catchError(error => {
-        console.error('API Error:', error);
-        return throwError(() => new Error('Something went wrong'));
-      })
-    );
-  }
+  return this.http.post(`${this.apiUrl}/contact`, formData).pipe(
+    catchError(error => {
+      console.error('API Error:', error);
+      return throwError(() => new Error('Something went wrong'));
+    })
+  );
+}
 }

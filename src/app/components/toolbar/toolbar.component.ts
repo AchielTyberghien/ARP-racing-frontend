@@ -10,26 +10,20 @@ import { RouterLink } from "@angular/router";
             py-4 bg-transparent">
 
       <div routerLink="/portfolio"
-          class="text-lg md:text-xl font-semibold font-helvetica
-                  transition-transform duration-300
-                  hover:scale-110 hover:underline hover:decoration-red-500 hover:underline-offset-4
-                  cursor-pointer">
+          class="nav-link text-lg md:text-xl font-semibold font-helvetica
+                  transition-transform duration-300 hover:scale-110 cursor-pointer">
         Portfolio
       </div>
 
       <div routerLink="/library"
-          class="text-lg md:text-xl font-semibold font-helvetica
-                  transition-transform duration-300
-                  hover:scale-110 hover:underline hover:decoration-red-500 hover:underline-offset-4
-                  cursor-pointer">
+          class="nav-link text-lg md:text-xl font-semibold font-helvetica
+                  transition-transform duration-300 hover:scale-110 cursor-pointer">
         Library
       </div>
 
       <div routerLink="/contact"
-          class="text-lg md:text-xl font-semibold font-helvetica
-                  transition-transform duration-300
-                  hover:scale-110 hover:underline hover:decoration-red-500 hover:underline-offset-4
-                  cursor-pointer">
+          class="nav-link text-lg md:text-xl font-semibold font-helvetica
+                  transition-transform duration-300 hover:scale-110 cursor-pointer">
         Contact
       </div>
 
