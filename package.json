@@ -1,6 +1,16 @@
 {
   "name": "arp-racing-photography",
   "version": "0.0.0",
+  "browserslist": [
+    "last 3 versions",
+    "iOS >= 11",
+    "Safari >= 11",
+    "Android >= 5",
+    "Chrome >= 60",
+    "Firefox >= 60",
+    "> 0.5%",
+    "not dead"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
