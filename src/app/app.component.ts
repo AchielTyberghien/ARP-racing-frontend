@@ -10,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
   </div>
   `,
   styles: [],
+
 })
 export class AppComponent {
   title = 'arpweb_ng_v19';
