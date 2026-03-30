@@ -2,7 +2,7 @@ name: Build Angular
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   build:
@@ -16,6 +16,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Create environment files
+        run: |
+          mkdir -p src/environments
+          echo "export const environment = {
+            production: false,
+            imagekit: {
+              urlEndpoint: '${{ secrets.IMAGEKIT_URL_ENDPOINT }}',
+              publicKey: '${{ secrets.IMAGEKIT_PUBLIC_KEY }}'
+            },
+            apiUrl: 'http://localhost:3000'
+          };" > src/environments/environment.ts
+          echo "export const environment = {
+            production: true,
+            imagekit: {
+              urlEndpoint: '${{ secrets.IMAGEKIT_URL_ENDPOINT }}',
+              publicKey: '${{ secrets.IMAGEKIT_PUBLIC_KEY }}'
+            },
+            apiUrl: '${{ secrets.API_URL }}'
+          };" > src/environments/environment.production.ts
 
       - name: Install & Build
         run: |
