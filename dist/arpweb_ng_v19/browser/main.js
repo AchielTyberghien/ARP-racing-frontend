@@ -41781,8 +41781,8 @@ var LoadingComponent = _LoadingComponent;
 var environment = {
   production: false,
   imagekit: {
-    urlEndpoint: "",
-    publicKey: ""
+    urlEndpoint: "https://ik.imagekit.io/2wrmcs8hud",
+    publicKey: "public_KGqaykB6rs3RCQF5/FplNAq0Tmc="
   },
   apiUrl: "http://localhost:3000"
 };
@@ -50041,10 +50041,10 @@ var routes = [
 var environment2 = {
   production: true,
   imagekit: {
-    urlEndpoint: "",
-    publicKey: ""
+    urlEndpoint: "https://ik.imagekit.io/2wrmcs8hud",
+    publicKey: "public_KGqaykB6rs3RCQF5/FplNAq0Tmc="
   },
-  apiUrl: ""
+  apiUrl: "https://arpracing.duckdns.org/api/api/"
 };
 
 // src/app/app.config.ts
