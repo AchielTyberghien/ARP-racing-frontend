@@ -1,59 +1,82 @@
-# ArpwebNgV19
+# ARP Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+Angular single-page application for the ARP Racing photography website.
 
-## Development server
+## What this project is
 
-To start a local development server, run:
+This app renders the public website and consumes backend APIs for dynamic content:
+
+- Carousel images
+- Library event overview
+- Event galleries
+- Contact form submission
+
+## How it works
+
+### Routing
+
+The frontend exposes these main routes:
+
+- `/` home
+- `/about`
+- `/portfolio`
+- `/library`
+- `/archive/:eventName`
+- `/contact`
+
+### Data flow
+
+1. Pages call `ApiService`.
+2. `ApiService` uses `environment.apiUrl`.
+3. HTTP calls are made to:
+   - `/carousel`
+   - `/library`
+   - `/library/:id`
+   - `/contact`
+4. Responses are cached where relevant using `shareReplay(1)`.
+
+### Images
+
+Image loading is configured using Angular's ImageKit loader and environment settings.
+
+## Tech stack
+
+- Angular
+- RxJS
+- Tailwind CSS + Bootstrap/CoreUI
+- ImageKit Angular integration
+
+## Local development
 
 ```bash
-ng serve
+npm install
+npm run start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+App runs at `http://localhost:4200`.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Build
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Production output is generated in `dist/arpweb_ng_v19`.
+
+## Environment configuration
+
+This project expects Angular environment files:
+
+- `src/environments/environment.ts`
+- `src/environments/environment.production.ts`
+
+At minimum, define:
+
+- `apiUrl` (backend base URL)
+- `imagekit.urlEndpoint` (ImageKit public URL endpoint)
+
+## Testing
 
 ```bash
-ng generate --help
+npm run test
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
