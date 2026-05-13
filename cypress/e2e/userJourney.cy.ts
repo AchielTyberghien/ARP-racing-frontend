@@ -33,7 +33,7 @@ describe('Main User Journey', () => {
       .type('John Doe')
 
     cy.get('input[formControlName="email"]')
-      .type('john@test.com')
+      .type('achiel.tyberghien@gmail.com')
 
     cy.get('input[formControlName="subject"]')
       .type('Inquiry about photos')
@@ -46,6 +46,6 @@ describe('Main User Journey', () => {
       .click()
 
     // Verify success message
-    cy.contains('Send message')
+    cy.contains('Your message has been sent successfully')
   })
 })
