@@ -24,7 +24,7 @@ import { Title, Meta } from '@angular/platform-browser';
       @else {
         <div class="flex flex-wrap justify-center">
           @for (item of slides; track $index) {
-            <div class="relative m-7 w-120 h-80 overflow-hidden flex items-center justify-center" (click)="openImage(item)">
+            <div class="relative m-7 sm:my-0 w-120 h-80 overflow-hidden flex items-center justify-center" (click)="openImage(item)">
               <img ngSrc="Arp%20Racing/library/{{eventName()}}/{{item.src}}" alt="{{item.description}}" priority width="480" height="320" class="object-contain object-center w-full h-full">
             </div>
           }
