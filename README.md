@@ -17,7 +17,7 @@ This app renders the public website and consumes backend APIs for dynamic conten
 
 The frontend exposes these main routes:
 
-- `/` home
+- `/home`
 - `/about`
 - `/portfolio`
 - `/library`
