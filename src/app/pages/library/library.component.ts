@@ -39,7 +39,7 @@ import { Title, Meta } from '@angular/platform-browser';
             
             <!-- Rotated folder label -->
             <div class="absolute inset-0 z-10 flex justify-center  pointer-events-none">
-              <p class="absolute bottom-6 transform -translate-y-1/2 text-lg font-bold text-neutral-600 bg-neutral-100 shadow-lg rounded-3xl p-1 px-2 whitespace-nowrap">
+              <p class="max-w-65 text-center  absolute bottom-8 transform text-lg font-bold text-neutral-600 bg-neutral-100 shadow-lg rounded-3xl p-1 px-2">
                 {{ item }}
               </p>
             </div>

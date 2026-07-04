@@ -13,7 +13,7 @@ import { TitleComponent } from '../title/title.component';
       <app-title title="ARP Racing Photography" class="text-white"/>
       
       <!-- Toolbar -->
-      <app-toolbar class="text-white scale-125"/>
+      <app-toolbar class="text-white"/>
 
     </div>
 
