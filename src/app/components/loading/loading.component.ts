@@ -4,9 +4,9 @@ import { Component, input } from '@angular/core';
   selector: 'app-loading',
   imports: [],
   template: `
-  <div class="flex flex-col items-center justify-center gap-6 h-full w-full">
+  <div class="flex flex-col items-center justify-center gap-2 h-full w-full">
       
-      <p class="text-sm text-center text-gray-200">
+      <p class="text-sm text-center text-gray-400">
         {{ message() }}
       </p>
 

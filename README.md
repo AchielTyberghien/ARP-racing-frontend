@@ -74,9 +74,3 @@ At minimum, define:
 
 - `apiUrl` (backend base URL)
 - `imagekit.urlEndpoint` (ImageKit public URL endpoint)
-
-## Testing
-
-```bash
-npm run test
-```
