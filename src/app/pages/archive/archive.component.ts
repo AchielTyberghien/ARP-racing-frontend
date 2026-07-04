@@ -24,8 +24,8 @@ import { Title, Meta } from '@angular/platform-browser';
       @else {
         <div class="flex flex-wrap justify-center">
           @for (item of slides; track $index) {
-            <div class="relative md:m-7 sm:my-0 w-120 h-80 overflow-hidden flex items-center justify-center" (click)="openImage(item)">
-              <img ngSrc="Arp%20Racing/library/{{eventName()}}/{{item.src}}" alt="{{item.description}}" priority width="480" height="320" class="object-contain object-center w-full h-full">
+            <div class="relative md:m-7 my-3 w-120 overflow-hidden flex items-center justify-center" (click)="openImage(item)">
+              <img ngSrc="Arp%20Racing/library/{{eventName()}}/{{item.src}}" alt="{{item.description}}" priority width="480" height="320" class="object-contain object-center w-full ">
             </div>
           }
         </div>
@@ -34,11 +34,11 @@ import { Title, Meta } from '@angular/platform-browser';
           <div class="fixed inset-0 bg-black/80 flex items-center justify-center z-40">
             
             <button
-              class="absolute top-4 right-4"
+              type="button"
+              class="absolute top-4 right-4 z-50 p-2"
               (click)="closeImage()"
             >
-            <p class="text-white text-6xl font-light leading-none">×</p>
-              
+              <p class="text-white text-6xl font-light leading-none pointer-events-none">×</p>
             </button>
 
             <div class="relative w-[90vw] h-[90vh] flex items-center justify-center">
