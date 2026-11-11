@@ -44,3 +44,9 @@ Thumbs.db
 environment.development.ts
 environment.production.ts
 environment.ts
+
+# Documentation files (internal use only)
+angular-route-doc.md
+FINAL_SITE_MAP_SUMMARY.md
+site-map-summary.md
+site-map.md
