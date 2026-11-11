@@ -14,7 +14,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build": "node scripts/generate-sitemap.js && ng build --configuration production",
+    "sitemap": "node scripts/generate-sitemap.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
