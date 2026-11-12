@@ -3,17 +3,22 @@
  * Usage: node scripts/generate-sitemap.js
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const DOMAIN = 'https://arpracing.be';
-const API_URL = process.env.API_URL || 'https://api.arpracing.be'; // replace with your actual backend URL
+const DOMAIN = "https://arpracing.be";
+// Use API_URL from environment or GitHub secret, with duckdns fallback
+// In GitHub Actions workflow, this should be set from: ${{ secrets.API_URL }}
+const API_URL =
+  process.env.API_URL ||
+  process.env.API_URL_PROD ||
+  "https://arpracing.duckdns.org/api/api/";
 
 const staticRoutes = [
-  { path: '', priority: '1.0', changefreq: 'weekly' },
-  { path: '/portfolio', priority: '0.9', changefreq: 'weekly' },
-  { path: '/library', priority: '0.9', changefreq: 'weekly' },
-  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
+  { path: "", priority: "1.0", changefreq: "weekly" },
+  { path: "/portfolio", priority: "0.9", changefreq: "weekly" },
+  { path: "/library", priority: "0.9", changefreq: "weekly" },
+  { path: "/contact", priority: "0.7", changefreq: "monthly" },
 ];
 
 async function generateSitemap() {
@@ -27,25 +32,36 @@ async function generateSitemap() {
       const json = await response.json();
       if (json.data) {
         const eventNames = Object.keys(json.data);
-        dynamicRoutes = eventNames.map(name => ({
+        dynamicRoutes = eventNames.map((name) => ({
           path: `/archive/${encodeURIComponent(name)}`,
-          priority: '0.8',
-          changefreq: 'monthly'
+          priority: "0.8",
+          changefreq: "monthly",
         }));
       }
     }
   } catch (err) {
-    console.warn('Could not fetch dynamic events from backend API, continuing with static routes:', err.message);
+    console.warn(
+      "Could not fetch dynamic events from backend API, continuing with static routes:",
+      err.message,
+    );
+    // Fallback to hardcoded event names if API call fails
+    dynamicRoutes = [
+      { path: "/archive", priority: "0.8", changefreq: "monthly" },
+    ];
   }
 
   const allRoutes = [...staticRoutes, ...dynamicRoutes];
 
-  const xmlUrls = allRoutes.map(r => `  <url>
+  const xmlUrls = allRoutes
+    .map(
+      (r) => `  <url>
     <loc>${DOMAIN}${r.path}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>${r.changefreq}</changefreq>
     <priority>${r.priority}</priority>
-  </url>`).join('\n');
+  </url>`,
+    )
+    .join("\n");
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -53,9 +69,11 @@ async function generateSitemap() {
 ${xmlUrls}
 </urlset>`;
 
-  const outputPath = path.join(__dirname, '../public/sitemap.xml');
-  fs.writeFileSync(outputPath, sitemapXml, 'utf8');
-  console.log(`Successfully generated sitemap.xml with ${allRoutes.length} routes at ${outputPath}`);
+  const outputPath = path.join(__dirname, "../public/sitemap.xml");
+  fs.writeFileSync(outputPath, sitemapXml, "utf8");
+  console.log(
+    `Successfully generated sitemap.xml with ${allRoutes.length} routes at ${outputPath}`,
+  );
 }
 
 generateSitemap();
