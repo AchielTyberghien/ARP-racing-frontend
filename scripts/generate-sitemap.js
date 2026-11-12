@@ -28,14 +28,9 @@ async function generateSitemap() {
 
   try {
     // Fetch dynamic event folders from the backend API
-    console.log(`${API_URL}/library`);
     const response = await fetch(`${API_URL}/library`);
 
     if (response.ok) {
-      console.log(
-        "Successfully fetched dynamic events from backend API.",
-        response.body,
-      );
       const json = await response.json();
       if (json.data) {
         const eventNames = Object.keys(json.data);
