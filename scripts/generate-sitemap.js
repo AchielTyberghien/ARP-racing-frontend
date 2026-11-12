@@ -7,14 +7,18 @@ const fs = require("fs");
 const path = require("path");
 
 const DOMAIN = "https://arpracing.be";
-const API_URL = process.env.API_URL || "http://localhost:3000"; // Default to localhost if not set
+// Use API_URL from environment or GitHub secret, with duckdns fallback
+// In GitHub Actions workflow, this should be set from: ${{ secrets.API_URL }}
+const API_URL =
+  process.env.API_URL ||
+  process.env.API_URL_PROD ||
+  "https://arpracing.duckdns.org/api/api/";
 
 const staticRoutes = [
   { path: "", priority: "1.0", changefreq: "weekly" },
   { path: "/portfolio", priority: "0.9", changefreq: "weekly" },
   { path: "/library", priority: "0.9", changefreq: "weekly" },
   { path: "/contact", priority: "0.7", changefreq: "monthly" },
-  { path: "/archive", priority: "0.7", changefreq: "monthly" },
 ];
 
 async function generateSitemap() {
@@ -42,8 +46,7 @@ async function generateSitemap() {
     );
     // Fallback to hardcoded event names if API call fails
     dynamicRoutes = [
-      { path: "/archive/monaco-2024", priority: "0.8", changefreq: "monthly" },
-      { path: "/archive/spa-2024", priority: "0.8", changefreq: "monthly" },
+      { path: "/archive", priority: "0.8", changefreq: "monthly" },
     ];
   }
 

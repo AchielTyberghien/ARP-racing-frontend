@@ -50,6 +50,9 @@ jobs:
           };" > src/environments/environment.production.ts
 
       - name: Install & Build
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          API_URL_PROD: ${{ secrets.API_URL }}
         run: |
           npm install
           npm run build -- --configuration=production
