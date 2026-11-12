@@ -1,10 +1,10 @@
-/**
- * Script to generate sitemap.xml dynamically by fetching event routes from backend API.
- * Usage: node scripts/generate-sitemap.js
- */
+import { environment } from "../src/environments/environment.ts";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const fs = require("fs");
-const path = require("path");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const DOMAIN = "https://arpracing.be";
 // Use API_URL from environment or GitHub secret, with duckdns fallback
@@ -12,6 +12,7 @@ const DOMAIN = "https://arpracing.be";
 const API_URL =
   process.env.API_URL ||
   process.env.API_URL_PROD ||
+  environment.apiUrl ||
   "https://arpracing.duckdns.org/api/api/";
 
 const staticRoutes = [
@@ -27,8 +28,14 @@ async function generateSitemap() {
 
   try {
     // Fetch dynamic event folders from the backend API
+    console.log(`${API_URL}/library`);
     const response = await fetch(`${API_URL}/library`);
+
     if (response.ok) {
+      console.log(
+        "Successfully fetched dynamic events from backend API.",
+        response.body,
+      );
       const json = await response.json();
       if (json.data) {
         const eventNames = Object.keys(json.data);
